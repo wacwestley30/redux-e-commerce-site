@@ -5,6 +5,7 @@ const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const imageRoutes = require('./routes/images');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,6 +20,7 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+  app.use('/api', imageRoutes);
 
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
