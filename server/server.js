@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
+const cors = require('cors');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -14,10 +15,17 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Create a new instance of an Apollo server with the GraphQL schema
+// CORS options
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+};
+
+// Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
 
+  app.use(cors(corsOptions));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use('/api', imageRoutes);

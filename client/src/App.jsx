@@ -1,14 +1,12 @@
-import './App.css'
+import React from 'react';
+import ProductList from './components/ProductList';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello!
-      </h1>
-    </>
-  )
-}
+    <div>
+      <ProductList />
+    </div>
+  );
+};
 
-export default App
+export default App;
