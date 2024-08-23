@@ -1,9 +1,14 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
+import './index.css';
+
 import App from './App';
 import store from './store';
+import ErrorPage from './components/ErrorPage';
+import ProductList from './components/ProductList';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -11,13 +16,26 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <ProductList />,
+      },
+    ],
+  },
+]);
+
+const root = createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
     <ApolloProvider client={client}>
-      <App />
+      <RouterProvider router={router} />
     </ApolloProvider>
   </Provider>
 );

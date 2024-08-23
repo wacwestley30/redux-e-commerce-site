@@ -1,11 +1,17 @@
 import React from 'react';
-import ProductList from './components/ProductList';
+import { Outlet } from 'react-router-dom';
+import Header from './components/UI/Header';
+import Footer from './components/UI/Footer';
 
 const App = () => {
   return (
-    <div>
-      <ProductList />
-    </div>
+    <>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
   );
 };
 
