@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 
 export default function Footer() {
     return (
-        <nav className='bg-secondary'>
+        <nav className='bg-secondary mt-4'>
             <div className='max-w-7xl px-2'>
                 <div className='relative flex h-16 items-center justify-between'>
                     <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
