@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Product } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -10,6 +10,9 @@ const resolvers = {
           }
           throw AuthenticationError;
         },
+        products: async () => {
+          return await Product.find({});
+        }
     },
 };
 

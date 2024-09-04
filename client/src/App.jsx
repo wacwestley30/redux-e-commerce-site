@@ -1,14 +1,18 @@
-import './App.css'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './components/UI/Header';
+import Footer from './components/UI/Footer';
 
-function App() {
-
+const App = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello!
-      </h1>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
