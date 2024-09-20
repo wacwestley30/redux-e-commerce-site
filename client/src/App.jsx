@@ -5,13 +5,13 @@ import Footer from './components/UI/Footer';
 
 const App = () => {
   return (
-    <>
+    <div className="min-h-screen bg-background text-text">
       <Header />
       <main>
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
