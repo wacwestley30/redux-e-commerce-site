@@ -12,6 +12,9 @@ const resolvers = {
         },
         products: async () => {
           return await Product.find({});
+        },
+        product: async (parent, { productId }) => {
+          return Product.findById(productId)
         }
     },
 };

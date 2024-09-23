@@ -17,9 +17,9 @@ export default function Navbar() {
 				const isActive = link.to === location.pathname;
 				const className = isActive
 					// active styles
-					? 'text-primary bd-secondary border-2 border-secondary px-4 py-2 rounded-md hover:border-2 hover:border-primary'
+					? 'text-text bd-secondary border-2 border-text px-4 py-2 rounded-md hover:text-primary hover:border-primary'
 					// inactive styles
-					: 'text-text hover:text-primary hover:border-2 px-4 py-2 rounded-md';
+					: 'text-text hover:text-primary hover:border-primary hover:border-2 px-4 py-2 rounded-md';
 				
 				return (
 					<li key={link.key} className="nav-item">

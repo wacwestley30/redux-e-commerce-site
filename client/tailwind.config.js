@@ -7,20 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Soft Blue
-        primary: '#007BFF',
-
-        // Soft Gray
-        secondary: '#F5F5F5',
-
-        // Light Green
-        accent: '#28A745',
+        // Dark Blue
+        primary: '#3498db',
 
         // Dark Gray
-        text: '#333333',
+        secondary: '#2c3e50',
 
-        // Light Red
-        warning: '#FF6B6B',
+        // Teal
+        accent: '#1abc9c',
+
+        // Light Gray
+        text: '#ecf0f1',
+
+        // Orange
+        warning: '#e67e22',
+
+        // Dark Background
+        background: '#1a1a1a',
+
+        // Slightly Lighter Background for Cards
+        surface: '#2a2a2a',
+      },
+      boxShadow: {
+        DEFAULT: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
     },
   },

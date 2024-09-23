@@ -5,13 +5,13 @@ import Footer from './components/UI/Footer';
 
 const App = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-background text-text">
       <Header />
-      <main>
+      <main className="flex-grow">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

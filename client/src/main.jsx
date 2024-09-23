@@ -9,6 +9,7 @@ import App from './App';
 import store from './store';
 import ErrorPage from './components/ErrorPage';
 import ProductList from './components/ProductList';
+import ProductPage from './components/ProductPage';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ProductList />,
+      },
+      {
+        path: '/product/:productId',
+        element: <ProductPage />,
       },
     ],
   },
