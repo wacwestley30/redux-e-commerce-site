@@ -21,7 +21,7 @@ const ProductList = () => {
 
     return (
         <div className='bg-background pt-2 pb-4 text-text'>
-            <h1 className='text-4xl font-bold pb-2 ml-4'>Product List</h1>
+            <h1 className='text-center md:text-start text-4xl font-bold pb-2 ml-4'>Product List</h1>
             <ul className="mx-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 {products.map((product) => (
                     <li key={product._id} className="bg-surface shadow rounded-lg overflow-hidden">
@@ -31,7 +31,7 @@ const ProductList = () => {
                                     <img 
                                     src={product.image} 
                                     alt={product.name} 
-                                    className="w-48 h-48 object-cover" 
+                                    className="w-48 h-48 object-cover rounded-lg" 
                                     />
                                 </div>
                                 <h2 className="text-xl font-semibold text-primary mt-4">
