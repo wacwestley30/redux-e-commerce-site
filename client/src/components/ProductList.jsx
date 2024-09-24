@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { GET_PRODUCTS } from '../utils/queries';
 import { setProducts } from '../features/products/productsSlice';
-import ProductItem from './ProductItem';
+import PriceFilter from './UI/PriceFilter';
 
 const ProductList = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products.items);
+    const { minPrice, maxPrice } = useSelector((state) => state.products.priceFilter);
 
     const { loading, error, data } = useQuery(GET_PRODUCTS, {
         onCompleted: (data) => {
@@ -19,11 +20,16 @@ const ProductList = () => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading products</div>;
 
+    const filteredProducts = products.filter(product =>
+        product.price >= minPrice && product.price <= maxPrice
+    );
+
     return (
         <div className='bg-background pt-2 pb-4 text-text'>
+            <PriceFilter />
             <h1 className='text-center md:text-start text-4xl font-bold pb-2 ml-4'>Product List</h1>
             <ul className="mx-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                     <li key={product._id} className="bg-surface shadow rounded-lg overflow-hidden">
                         <div className="p-4 text-center">
                             <Link to={`product/${product._id}`}>
