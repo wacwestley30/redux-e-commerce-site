@@ -23,7 +23,7 @@ export default function Navbar() {
 				
 				return (
 					<li key={link.key} className="nav-item">
-						<Link className={`${className} px-2`} to={link.to}>{link.name}</Link>
+						<Link className={`${className}`} to={link.to}>{link.name}</Link>
 					</li>
 				);
 			})}
