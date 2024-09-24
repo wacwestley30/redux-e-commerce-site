@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPriceFilter } from "../../features/products/productsSlice";
 import { useState } from "react";
 
-const PriceFilter = () => {
+const PriceFilter = ({ onClose }) => {
     const dispatch = useDispatch();
     const { minPrice, maxPrice } = useSelector((state) => state.products.priceFilter);
     const [min, setMin] = useState(minPrice || 0);
@@ -26,6 +26,7 @@ const PriceFilter = () => {
 
     const handleFilterChange = () => {
         dispatch(setPriceFilter({ minPrice: min, maxPrice: max }));
+        if (onClose) onClose();
     };
 
     return (

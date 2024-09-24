@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { GET_PRODUCTS } from '../utils/queries';
 import { setProducts } from '../features/products/productsSlice';
-import PriceFilter from './UI/PriceFilter';
+import FilterSidebar from './UI/FilterSidebar';
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -26,39 +26,41 @@ const ProductList = () => {
 
     return (
         <div className='bg-background pt-2 pb-4 text-text'>
-            <PriceFilter />
             <h1 className='text-center md:text-start text-4xl font-bold pb-2 ml-4'>Product List</h1>
-            <ul className="mx-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {filteredProducts.map((product) => (
-                    <li key={product._id} className="bg-surface shadow rounded-lg overflow-hidden">
-                        <div className="p-4 text-center">
-                            <Link to={`product/${product._id}`}>
-                                <div className='flex justify-center items-center'>
-                                    <img 
-                                    src={product.image} 
-                                    alt={product.name} 
-                                    className="w-48 h-48 object-cover rounded-lg" 
-                                    />
+            <div className='flex flex-row'>
+                <FilterSidebar />
+                <ul className="mx-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {filteredProducts.map((product) => (
+                        <li key={product._id} className="bg-surface shadow rounded-lg overflow-hidden">
+                            <div className="p-4 text-center">
+                                <Link to={`product/${product._id}`}>
+                                    <div className='flex justify-center items-center'>
+                                        <img 
+                                        src={product.image} 
+                                        alt={product.name} 
+                                        className="w-48 h-48 object-cover rounded-lg" 
+                                        />
+                                    </div>
+                                    <h2 className="text-xl font-semibold text-primary mt-4">
+                                    {product.name}
+                                    </h2>
+                                </Link>
+                                <p className="mt-2 mb-4 h-20">{product.description}</p>
+                                <div className="mt-4">
+                                    <span className="text-lg font-bold">
+                                        ${product.price.toFixed(2)}
+                                    </span>
                                 </div>
-                                <h2 className="text-xl font-semibold text-primary mt-4">
-                                {product.name}
-                                </h2>
-                            </Link>
-                            <p className="mt-2 mb-4 h-20">{product.description}</p>
-                            <div className="mt-4">
-                                <span className="text-lg font-bold">
-                                    ${product.price.toFixed(2)}
-                                </span>
+                                <div className='mt-3'>
+                                    <button className="addToCartButton">
+                                        Add to Cart
+                                    </button>
+                                </div>
                             </div>
-                            <div className='mt-3'>
-                                <button className="addToCartButton">
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
